@@ -43,6 +43,7 @@ function ProvinceTargetsGrid({
   mode = 'sites-only',
   provinceId,
   provinceLabel,
+  breadcrumbProvincePath,
   zoneLabel,
   selectedActivities = [],
   selectedActivity = null,
@@ -92,6 +93,7 @@ function ProvinceTargetsGrid({
           const nextState = {
             breadcrumbSourceLabel,
             breadcrumbProvinceLabel: provinceLabel,
+            breadcrumbProvincePath,
             breadcrumbZoneLabel: target.type === 'zone' ? target.nombre : zoneLabel,
             breadcrumbZoneId: target.type === 'zone' ? target.zoneId ?? target.id : target.zoneId,
           }

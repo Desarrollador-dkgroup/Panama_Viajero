@@ -8,6 +8,7 @@ function ProvinceSitesOnly({
   selectedActivities = [],
   breadcrumbSourceLabel = 'Mapa',
   provinceLabel,
+  breadcrumbProvincePath,
   zoneLabel,
 }) {
   const { sites: publishedSites } = usePublishedSites()
@@ -57,6 +58,7 @@ function ProvinceSitesOnly({
       selectedActivities={selectedActivities}
       breadcrumbSourceLabel={breadcrumbSourceLabel}
       provinceLabel={provinceLabel || provinceData?.nombre}
+      breadcrumbProvincePath={breadcrumbProvincePath}
       zoneLabel={zoneLabel}
     />
   )
