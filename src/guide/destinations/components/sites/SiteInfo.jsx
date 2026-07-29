@@ -38,10 +38,11 @@ function SiteInfo() {
   const provinceId = site?.provinceId || site?.provinceIds?.[0] || site?.sharedProvinceIds?.[0] || ''
   const breadcrumbSourceLabel = 'Destinos';
   const breadcrumbSourceTo = '/#map';
-  const provincePath = (
+  const defaultProvincePath = (
     provinceMedia.find((province) => province.id === provinceId)?.path
     || (provinceId === 'guna-yala' ? '/provincias/comarca-guna-yala' : breadcrumbSourceTo)
   )
+  const provincePath = location.state?.breadcrumbProvincePath || defaultProvincePath
   const provinceLabel = location.state?.breadcrumbProvinceLabel || provinceLabels[provinceId] || provinceId || 'Provincia'
   const zoneLabel = location.state?.breadcrumbZoneLabel
   const zoneId = site?.zoneId || location.state?.breadcrumbZoneId
