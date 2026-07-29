@@ -1,11 +1,11 @@
 import { FiChevronRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-function BreadcrumbNav({ items = [] }) {
+function BreadcrumbNav({ items = [], className = '' }) {
   if (!items.length) return null
 
   return (
-    <nav aria-label="Navegación" className="mt-5 w-full max-w-full">
+    <nav aria-label="Navegación" className={`mt-5 w-full max-w-full ${className}`}>
       <div className="inline-flex w-full max-w-full min-w-0 flex-wrap items-center gap-1 rounded-[10px] border border-white/15 bg-black/35 px-4 py-2 text-sm shadow-[0_12px_30px_rgba(0,0,0,0.22)] backdrop-blur-md">
         {items.map((item, index) => {
           const isLast = index === items.length - 1

@@ -9,6 +9,7 @@ import { FiMapPin } from 'react-icons/fi'
 import BreadcrumbNav from '../destinations/BreadcrumbNav.jsx'
 import HospedajeYComida from '../../../fase_2/HospedajeYComida.jsx'
 import { usePublishedSites } from '../../context/publishedSitesStore.js'
+import { provinceMedia } from '../../destinations-pages/provinceMedia.js'
 
 const provinceLabels = {
   'bocas-del-toro': 'Bocas del Toro',
@@ -37,11 +38,15 @@ function SiteInfo() {
   const provinceId = site?.provinceId || site?.provinceIds?.[0] || site?.sharedProvinceIds?.[0] || ''
   const breadcrumbSourceLabel = 'Destinos';
   const breadcrumbSourceTo = '/#map';
+  const provincePath = (
+    provinceMedia.find((province) => province.id === provinceId)?.path
+    || (provinceId === 'guna-yala' ? '/provincias/comarca-guna-yala' : breadcrumbSourceTo)
+  )
   const provinceLabel = location.state?.breadcrumbProvinceLabel || provinceLabels[provinceId] || provinceId || 'Provincia'
   const zoneLabel = location.state?.breadcrumbZoneLabel
   const breadcrumbItems = [
     { label: breadcrumbSourceLabel, to: breadcrumbSourceTo },
-    { label: provinceLabel, to: breadcrumbSourceTo },
+    { label: provinceLabel, to: provincePath },
     ...(zoneLabel ? [{ label: zoneLabel, to: breadcrumbSourceTo }] : []),
     { label: site?.nombre || 'Sitio' },
   ]
@@ -91,18 +96,20 @@ function SiteInfo() {
 
       <section className="relative min-h-[82vh] overflow-hidden mt-5">
         <div className="relative md:flex  ms:flex-col  min-h-[82vh] items-center px-4 md:mt-15 mt-100 md:mb-0 max-w-8xl justify-between">
-          <div className="max-w-md rounded-xl border border-white/10 bg-black/15 p-8 text-start shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-sm md:mt-0 mt-[-200px] md:ml-15">
-            <h1 className="font-main text-5xl text-brand-white md:text-6xl">{site.nombre}</h1>
-            <div className="flex items-center gap-1 text-[#f1f1f1e6]/85">
-              <FiMapPin className="h-4 w-4 " />
-              <p className="text-sm text-center font-secondary leading-6">
-                {site.previewUbicacion ?? 'Ubicación no disponible'}
+          <div className="w-full max-w-md md:ml-15">
+            <BreadcrumbNav items={breadcrumbItems} className="mt-[-230px] md:mt-0" />
+            <div className="mt-3 rounded-xl border border-white/10 bg-black/15 p-8 text-start shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+              <h1 className="font-main text-5xl text-brand-white md:text-6xl">{site.nombre}</h1>
+              <div className="flex items-center gap-1 text-[#f1f1f1e6]/85">
+                <FiMapPin className="h-4 w-4 " />
+                <p className="text-sm text-center font-secondary leading-6">
+                  {site.previewUbicacion ?? 'Ubicación no disponible'}
+                </p>
+              </div>
+              <p className="mx-auto mt-5 max-w-2xl font-body leading-7 text-brand-white md:text-lg">
+                {site.descripcion}
               </p>
             </div>
-            <p className="mx-auto mt-5 max-w-2xl font-body leading-7 text-brand-white md:text-lg">
-              {site.descripcion}
-            </p>
-            <BreadcrumbNav items={breadcrumbItems} />
           </div>
           <div className="md:mr-15 mt-20">
             <SiteMap site={site} />
