@@ -43,10 +43,14 @@ function SiteInfo() {
   )
   const provinceLabel = location.state?.breadcrumbProvinceLabel || provinceLabels[provinceId] || provinceId || 'Provincia'
   const zoneLabel = location.state?.breadcrumbZoneLabel
+  const zoneId = site?.zoneId || location.state?.breadcrumbZoneId
+  const zonePath = zoneId
+    ? `/zonas/${encodeURIComponent(zoneId)}?province=${encodeURIComponent(provinceId)}`
+    : provincePath
   const breadcrumbItems = [
     { label: breadcrumbSourceLabel, to: breadcrumbSourceTo },
     { label: provinceLabel, to: provincePath },
-    ...(zoneLabel ? [{ label: zoneLabel, to: breadcrumbSourceTo }] : []),
+    ...(zoneLabel ? [{ label: zoneLabel, to: zonePath }] : []),
     { label: site?.nombre || 'Sitio' },
   ]
 

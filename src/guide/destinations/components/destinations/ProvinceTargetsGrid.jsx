@@ -93,6 +93,7 @@ function ProvinceTargetsGrid({
             breadcrumbSourceLabel,
             breadcrumbProvinceLabel: provinceLabel,
             breadcrumbZoneLabel: target.type === 'zone' ? target.nombre : zoneLabel,
+            breadcrumbZoneId: target.type === 'zone' ? target.zoneId ?? target.id : target.zoneId,
           }
 
           return (

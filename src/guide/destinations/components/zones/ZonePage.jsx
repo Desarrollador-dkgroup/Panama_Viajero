@@ -143,6 +143,7 @@ function ZonePage() {
     activities: s.actividades || [],
     type: 'site',
     siteId: s.id,
+    zoneId: decodedZoneId,
   })
 
   return (
@@ -163,18 +164,21 @@ function ZonePage() {
           <ZoneVideo provinceData={provinceData} zone={zone} fixedBackground scrollProgress={scrollProgress} />
         </div>
         <div className="relative z-10 flex min-h-screen items-start px-4 md:items-center max-w-lg">
-          <div className="mt-24 max-w-md rounded-xl border border-white/10 bg-black/15 p-8 text-start shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-sm md:mt-0 md:ml-10">
+          <div className="mt-24 w-full max-w-md md:mt-0 md:ml-10">
+            <BreadcrumbNav
+              items={[
+                { label: breadcrumbSourceLabel, to: breadcrumbSourceTo },
+                { label: provinceData.nombre, to: `/provincias/${provinceId}` },
+                { label: safeHeading },
+              ]}
+              className="mb-3 mt-0"
+            />
+            <div className="rounded-xl border border-white/10 bg-black/15 p-8 text-start shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-sm">
             <h1 className="font-main text-5xl font-bold text-brand-white brightness-150 md:text-6xl">
               {safeHeading}
             </h1>
             <p className="mt-4 font-body text-lg leading-7 text-brand-white/90">{safeDescription}</p>
-            <BreadcrumbNav
-              items={[
-                { label: breadcrumbSourceLabel, to: breadcrumbSourceTo },
-                { label: provinceData.nombre, to: breadcrumbSourceTo },
-                { label: safeHeading },
-              ]}
-            />
+            </div>
           </div>
         </div>
       </section>
