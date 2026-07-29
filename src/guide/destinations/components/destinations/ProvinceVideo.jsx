@@ -29,7 +29,9 @@ function ProvinceVideo({ provinceData, videoSrc, fixedBackground = false, breadc
                     {media}
                 </div>
                 <div className="relative z-10 flex min-h-screen items-start px-4 md:items-center">
-                    <div className="mt-24 max-w-md rounded-xl border border-white/10 bg-black/15 p-8 shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-md md:mt-0 md:ml-15">
+                    <div className="mt-24 w-full max-w-md md:mt-0 md:ml-15">
+                        <BreadcrumbNav items={breadcrumbItems} className="mb-3 mt-0" />
+                        <div className="rounded-xl border border-white/10 bg-black/15 p-8 shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-md">
                         <h1
                             className="font-main text-6xl font-bold brightness-150 text-brand-white md:pb-4 md:text-6xl"
                         >
@@ -38,7 +40,7 @@ function ProvinceVideo({ provinceData, videoSrc, fixedBackground = false, breadc
                         <p className="font-body text-lg leading-7 text-brand-white/90">
                             {provinceData.descripcionCorta}
                         </p>
-                        <BreadcrumbNav items={breadcrumbItems} />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -50,7 +52,9 @@ function ProvinceVideo({ provinceData, videoSrc, fixedBackground = false, breadc
             <div className="relative z-0">
                 {media}
                 <div className="absolute inset-0 z-10 flex items-start bg-gradient-to-r from-brand-charcoal/70 via-brand-charcoal/35 to-transparent px-4 md:items-center">
-                    <div className="mt-24 max-w-md rounded-xl border border-white/15 bg-black/35 p-8 shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-md md:mt-0 md:ml-15">
+                    <div className="mt-24 w-full max-w-md md:mt-0 md:ml-15">
+                        <BreadcrumbNav items={breadcrumbItems} className="mb-3 mt-0" />
+                        <div className="rounded-xl border border-white/15 bg-black/35 p-8 shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-md">
                         <h1 className="font-main text-6xl font-bold brightness-150 text-brand-white md:pb-4 md:text-6xl"
                         >
                             {provinceData.nombre}
@@ -58,7 +62,7 @@ function ProvinceVideo({ provinceData, videoSrc, fixedBackground = false, breadc
                         <p className="font-body text-lg leading-7 text-brand-white/90">
                             {provinceData.descripcionCorta}
                         </p>
-                        <BreadcrumbNav items={breadcrumbItems} />
+                        </div>
                     </div>
                 </div>
             </div>
