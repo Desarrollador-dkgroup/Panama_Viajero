@@ -24,7 +24,7 @@ function BottomBanner({ onLogoClick }) {
                             />
                         </button>
                         <div>
-                            <h1 className="font-body  text-2xl text-white">¡Conoce Panamá como nunca antes lo viste!</h1>
+                            <h1 className="font-body  text-2xl text-white">¡Descubre el Panamá que nadie te muestra!</h1>
                         </div>
                         
                     </div>
