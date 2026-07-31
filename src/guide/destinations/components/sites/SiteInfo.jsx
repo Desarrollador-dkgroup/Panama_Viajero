@@ -30,10 +30,10 @@ function SiteInfo() {
   const navigate = useNavigate()
   const location = useLocation()
   const { siteId } = useParams()
-  const { sitesBySlug, loading } = usePublishedSites()
+  const { sitesById, loading } = usePublishedSites()
   const decodedSiteId = siteId ? decodeURIComponent(siteId) : ''
   const site = decodedSiteId
-    ? sitesBySlug[decodedSiteId] ?? siteRegistry[decodedSiteId] ?? null
+    ? sitesById[decodedSiteId] ?? siteRegistry[decodedSiteId] ?? null
     : null
   const provinceId = site?.provinceId || site?.provinceIds?.[0] || site?.sharedProvinceIds?.[0] || ''
   const breadcrumbSourceLabel = 'Destinos';
