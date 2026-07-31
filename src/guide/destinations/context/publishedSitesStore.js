@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react'
 
 export const PublishedSitesContext = createContext({
   sites: [],
-  sitesBySlug: {},
+  sitesById: {},
   loading: true,
   error: '',
 })
