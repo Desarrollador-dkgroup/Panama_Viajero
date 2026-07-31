@@ -2,6 +2,21 @@ import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { provinceMedia } from '../../destinations/destinations-pages/provinceMedia.js'
 
+const provinceDescriptions: Record<string, string> = {
+  'bocas-del-toro': 'Islas caribeñas, cultura y aventuras frente al mar.',
+  chiriqui: 'Montañas, café de altura y experiencias de naturaleza.',
+  cocle: 'Playas, montañas y tradiciones en el corazón de Panamá.',
+  'rivera-pacifica': 'Playas, surf y espectaculares atardeceres.',
+  colon: 'Historia caribeña, fortalezas y paisajes tropicales.',
+  darien: 'Naturaleza, cultura indígena y aventura.',
+  herrera: 'Folclore, gastronomía y tradiciones panameñas.',
+  'los-santos': 'Cultura, playas y tradiciones que celebran Panamá.',
+  panama: 'Ciudad, historia y experiencias para descubrir.',
+  'panama-oeste': 'Playas, montañas y escapadas cerca de la ciudad.',
+  veraguas: 'Bosques, costas y aventura en cada recorrido.',
+  'comarca-guna-yala': 'Islas paradisíacas de aguas cristalinas.',
+}
+
 function getRandomItems(items, limit) {
   const shuffled = [...items]
 
@@ -32,10 +47,10 @@ function Suggestions() {
       {/* Se quitó text-center innecesario ya que tus textos van a la izquierda */}
       <div className="mb-8">
         <h2 className="font-main text-left text-3xl text-brand-white md:text-5xl">
-          Sugerencias para explorar
+          Encuentra tu próximo destino
         </h2>
         <p className="font-body-italic mt-3 max-w-2xl text-left text-brand-white md:text-lg">
-          Destinos recomendados para descubrir historia, naturaleza, cultura y experiencias únicas
+          DDescubre algunos de los lugares más increíbles de Panamá y comienza a planificar tu próxima aventura.
         </p>
       </div>
 
@@ -60,9 +75,12 @@ function Suggestions() {
               <div className="absolute inset-0 bg-black/20 transition-all duration-300 group-hover:bg-black/0" />
             </div>
             <div className="mt-3 w-full overflow-hidden text-center">
-              <span className="inline-block font-secondary-italic text-xl md:text-3xl text-brand-white transition-all duration-300 ease-out">
+              <span className="inline-block font-secondary text-xl md:text-3xl text-brand-white transition-all duration-300 ease-out">
                 {province.nombre}
               </span>
+              <p className="mt-1 font-body text-sm leading-5 text-brand-white/90 md:text-sm">
+                {provinceDescriptions[province.id] || 'Descubre paisajes y experiencias únicas en Panamá.'}
+              </p>
             </div>
           </button>
         ))}
