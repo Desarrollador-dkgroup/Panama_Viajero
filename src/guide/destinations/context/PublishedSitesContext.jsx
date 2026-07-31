@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { PublishedSitesContext } from './publishedSitesStore.js'
 
-const defaultApiBaseUrl = 'https://panama-viajero-api.creativogdpanama.workers.dev'
+const defaultApiBaseUrl = 'https://panama-viajero-api.desarrollo-dkgroup.workers.dev'
 const apiBaseUrl = (
   import.meta.env.VITE_API_BASE_URL || defaultApiBaseUrl
 ).replace(/\/$/, '')
