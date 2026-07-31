@@ -127,33 +127,30 @@ function Preregister({ onViewSite = null }) {
                             {/* Desktop */}
                             <div className="hidden md:flex items-baseline gap-2">
                                 <span className="font-body text-xl text-brand-charcoal/90">
-                                    Registrate y participa por una
+                                    Regístrate y comienza tu
                                 </span>
 
                                 <span className="font-main text-3xl font-bold text-brand-red">
-                                    ESTADÍA GRATIS
+                                    próxima aventura.
                                 </span>
                             </div>
 
                             {/* Mobile */}
                             <div className="flex flex-col md:hidden leading-tight">
                                 <span className="font-body text-xl text-brand-charcoal/90">
-                                    Registrate y participa
+                                    Regístrate y comienza tu
                                 </span>
 
                                 <div className="flex items-baseline gap-2">
-                                    <span className="font-body text-xl text-brand-charcoal/90">
-                                        por una
-                                    </span>
-
                                     <span className="font-main text-3xl font-bold text-brand-red">
-                                        ESTADÍA GRATIS
+                                        próxima aventura.
                                     </span>
                                 </div>
                             </div>
 
-                            <span className="font-body text-xl text-brand-charcoal/90">
-                                para 2 personas.
+                            <span className="text-end font-body text-sm text-brand-charcoal/90 ">
+                                Participa para ganar una estadía para 2 personas y sé uno de los
+                                primeros en descubrir experiencias, destinos y promociones exclusivas de Panamá Viajero.
                             </span>
                         </div>
                     </div>
@@ -204,34 +201,41 @@ function Preregister({ onViewSite = null }) {
                             <button
                                 type="submit"
                                 disabled={status.loading}
-                                className="font-secondary-bold cursor-pointer rounded-lg bg-brand-red px-8 py-3 text-brand-white transition-colors hover:bg-brand-blue disabled:cursor-not-allowed disabled:opacity-70"
+                                className="font-secondary cursor-pointer rounded-lg bg-brand-red px-8 py-3 text-brand-white transition-colors hover:bg-brand-blue disabled:cursor-not-allowed disabled:opacity-70"
                             >
-                                {status.loading ? "Registrando..." : "Registrarme"}
+                                {status.loading ? "Registrando..." : "Quiero registrarme"}
                             </button>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm text-brand-charcoal/90">
-                            <input
-                                type="checkbox"
-                                id="terms"
-                                name="acceptedPrivacyPolicy"
-                                checked={form.acceptedPrivacyPolicy}
-                                onChange={handleChange}
-                                required
-                                className="h-4 w-4 cursor-pointer accent-brand-blue"
-                            />
-                            <label htmlFor="terms" className="font-body">
-                                He leido y acepto la{" "}
-                                <a
-                                    href={politicaDePrivacidadPdf}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="cursor-pointer underline hover:text-brand-blue"
-                                >
-                                    politica de privacidad
-                                </a>
-                            </label>
+                        <div className="flex items-start text-sm text-brand-charcoal/90 justify-between">
+                            <div className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    id="terms"
+                                    name="acceptedPrivacyPolicy"
+                                    checked={form.acceptedPrivacyPolicy}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-4 w-4 cursor-pointer accent-brand-blue"
+                                />
+                                <label htmlFor="terms" className="font-body">
+                                    He leido y acepto la{" "}
+                                    <a
+                                        href={politicaDePrivacidadPdf}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="cursor-pointer underline hover:text-brand-blue"
+                                    >
+                                        politica de privacidad
+                                    </a>
+                                </label>
+                            </div>
+                            <div className="text-end">
+                                <p>Registro gratuito</p>
+                                <p>Sin tarjetas de crédito</p>
+                            </div>
                         </div>
+
 
                         {status.error ? (
                             <p className="font-body text-sm text-brand-red">{status.error}</p>

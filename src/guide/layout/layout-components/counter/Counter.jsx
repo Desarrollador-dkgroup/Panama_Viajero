@@ -55,7 +55,7 @@ function CountdownModal({ onClose, onPreregister }) {
 
                         <div className="relative z-20 mt-[-15px] flex w-full flex-col items-start text-center md:text-left">
                             <h1 className="text-sm font-bold text-brand-blue">¡Espéralo pronto!</h1>
-                            <h2 className="text-2xl font-secondary text-[#CD2E4C]">Septiembre - 2026</h2>
+                            <h2 className="text-2xl font-secondary text-[#CD2E4C]">Octubre 2026</h2>
                             <div className="mt-[1px] w-45 border-1 border-brand-blue/50" />
 
                             <div className="mt-[-10px] ml-[-14px] flex items-center justify-center md:justify-start">
@@ -70,19 +70,14 @@ function CountdownModal({ onClose, onPreregister }) {
                         <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-brand-red/20 blur-3xl" />
 
                         <div className="relative z-10 mx-auto max-w-md text-center md:mx-0 md:text-left">
-                            <div className="mx-auto inline-flex mb-5 md:mb-0  w-fit items-center rounded-full border 
-                            border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/85 backdrop-blur md:mx-0">
-                                Muy pronto
-                            </div>
-
                             <h2 className="md:mt-6 font-secondary text-4xl leading-[0.95] sm:text-5xl md:text-[3.7rem] ">
-                                Descubre Panamá
-                                <span className="block text-[#CD2E4C]">como nunca</span>
-                                <span className="block text-[#CD2E4C]">antes lo viste</span>
+                                Descubre el Panamá
+                                <span className="block text-[#CD2E4C]">que nadie te</span>
+                                <span className="block text-[#CD2E4C]">muestra</span>
                             </h2>
 
                             <p className="mx-auto mt-5 max-w-sm font-body text-sm leading-6 text-white/80 sm:text-base md:mx-0 hidden md:block">
-                                Una nueva forma de explorar destinos, experiencias y lugares increíbles dentro de Panamá.
+                                Encuentra destinos, hospedajes, restaurantes, tours y experiencias para explorar Panamá desde una sola aplicación.
                             </p>
 
                             <div className="mt-2 flex flex-col items-center gap-4 md:mt-8 sm:flex-row sm:justify-center md:justify-start">
@@ -91,11 +86,11 @@ function CountdownModal({ onClose, onPreregister }) {
                                     onClick={onPreregister}
                                     className="w-full cursor-pointer rounded-full bg-white px-7 py-3.5 text-sm font-bold text-brand-charcoal shadow-[0_14px_30px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:bg-white/95 sm:w-auto"
                                 >
-                                    Regístrate
+                                    Empieza a explorar
                                 </button>
 
                                 <p className="max-w-[220px] font-body text-sm leading-5 text-white/80">
-                                    y participa por una estadía gratis para 2 personas.
+                                    y participa por una estadía para 2 personas.
                                 </p>
                             </div>
                         </div>
