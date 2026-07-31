@@ -1,6 +1,7 @@
 import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa6";
 import LogoCircular from "../../img_test/LogoRectangular.svg";
 import politicaDePrivacidadPdf from '../../Politica-de-privacidad.pdf';
+import DavisMarketingLogo from '../../img_test/DMarketing.svg'
 
 function BottomBanner({ onLogoClick }) {
     return (
@@ -60,6 +61,11 @@ function BottomBanner({ onLogoClick }) {
                                 <FaFacebook size={22} />
                             </a>
                         </div>
+                        <span className="font-body text-xs md:text-sm text-brand-white/70">Contacto:
+                            <a href="mailto:hola@panamaviajero.app" className="text-brand-white hover:text-brand-white/80 transition ml-1">
+                                hola@panamaviajero.app
+                            </a>
+                        </span>
                     </div>
                 </div>
 
@@ -87,13 +93,9 @@ function BottomBanner({ onLogoClick }) {
 
                     {/* Créditos y Contacto */}
                     <div className="flex flex-wrap justify-center gap-x-2 gap-y-1">
-                        <span>Desarrollado por <span className="text-brand-white">Davis Marketing</span></span>
+                        <span>Desarrollado por</span>
                         <span className="hidden md:inline text-brand-white/30">|</span>
-                        <span>Contacto: 
-                            <a href="mailto:hola@panamaviajero.app" className="text-brand-white hover:text-brand-white/80 transition ml-1">
-                                hola@panamaviajero.app
-                            </a>
-                        </span>
+                        <img src={DavisMarketingLogo} alt="Davis Marketing logo" className="h-5 w-auto" />
                     </div>
                 </div>
 
