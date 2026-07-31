@@ -28,8 +28,11 @@ function mapPublishedSite(site) {
   ]
 
   return {
-    id: site.slug,
+    // The API UUID keeps a published site distinct from legacy static content
+    // that can still use the same human-readable slug during migration.
+    id: `api-${site.id}`,
     apiId: site.id,
+    slug: site.slug,
     source: 'api',
     provinceId: site.province.slug,
     provinceIds,
@@ -87,14 +90,14 @@ export function PublishedSitesProvider({ children }) {
     return () => controller.abort()
   }, [])
 
-  const sitesBySlug = useMemo(
+  const sitesById = useMemo(
     () => Object.fromEntries(sites.map((site) => [site.id, site])),
     [sites],
   )
 
   const value = useMemo(
-    () => ({ sites, sitesBySlug, loading, error }),
-    [sites, sitesBySlug, loading, error],
+    () => ({ sites, sitesById, loading, error }),
+    [sites, sitesById, loading, error],
   )
 
   return (
