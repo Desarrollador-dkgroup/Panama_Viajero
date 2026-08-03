@@ -1,7 +1,7 @@
 import { useState } from "react";
 import politicaDePrivacidadPdf from "../../../Politica-de-privacidad.pdf";
 
-const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL ?? "";
+const PREREGISTRATION_API_URL = import.meta.env.VITE_PREREGISTRATION_API_URL ?? "";
 
 const initialForm = {
     fullName: "",
@@ -74,31 +74,34 @@ function Preregister({ onViewSite = null }) {
         event.preventDefault();
         setStatus({ loading: true, error: "", success: "" });
 
-        if (!APPS_SCRIPT_URL) {
+        if (!PREREGISTRATION_API_URL) {
             setStatus({
                 loading: false,
-                error: "Falta configurar VITE_APPS_SCRIPT_URL",
+                error: "Falta configurar VITE_PREREGISTRATION_API_URL",
                 success: "",
             });
             return;
         }
 
         try {
-            const payload = new URLSearchParams({
-                fullName: form.fullName,
-                phone: form.phone,
-                email: form.email,
-                acceptedPrivacyPolicy: String(form.acceptedPrivacyPolicy),
+            const response = await fetch(PREREGISTRATION_API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fullName: form.fullName,
+                    phone: form.phone,
+                    email: form.email,
+                    acceptedPrivacyPolicy: form.acceptedPrivacyPolicy,
+                }),
             });
 
-            await fetch(APPS_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-                },
-                body: payload.toString(),
-            });
+            const result = await response.json().catch(() => null);
+
+            if (!response.ok || !result?.ok) {
+                throw new Error(result?.error || "No se pudo completar el registro");
+            }
 
             setForm(initialForm);
             setStatus({
