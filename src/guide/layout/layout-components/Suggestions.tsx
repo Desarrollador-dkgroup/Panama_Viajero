@@ -50,7 +50,7 @@ function Suggestions() {
           Encuentra tu próximo destino
         </h2>
         <p className="font-body-italic mt-3 max-w-2xl text-left text-brand-white md:text-lg">
-          DDescubre algunos de los lugares más increíbles de Panamá y comienza a planificar tu próxima aventura.
+          Descubre algunos de los lugares más increíbles de Panamá y comienza a planificar tu próxima aventura.
         </p>
       </div>
 
@@ -78,7 +78,7 @@ function Suggestions() {
               <span className="inline-block font-secondary text-xl md:text-3xl text-brand-white transition-all duration-300 ease-out">
                 {province.nombre}
               </span>
-              <p className="mt-1 font-body text-sm leading-5 text-brand-white/90 md:text-sm">
+              <p className="mt-[-2px] font-body text-sm leading-5 text-brand-white/90 md:text-sm">
                 {provinceDescriptions[province.id] || 'Descubre paisajes y experiencias únicas en Panamá.'}
               </p>
             </div>

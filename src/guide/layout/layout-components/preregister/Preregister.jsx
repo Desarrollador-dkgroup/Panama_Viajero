@@ -233,7 +233,7 @@ function Preregister({ onViewSite = null }) {
                                     </a>
                                 </label>
                             </div>
-                            <div className="text-end">
+                            <div className="text-end text-xs">
                                 <p>Registro gratuito</p>
                                 <p>Sin tarjetas de crédito</p>
                             </div>
