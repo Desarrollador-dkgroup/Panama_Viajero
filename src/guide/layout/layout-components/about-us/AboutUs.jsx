@@ -31,9 +31,9 @@ function AboutUs() {
   return (
     <div className="mx-auto pt-40 pb-40 flex max-w-full flex-col items-center justify-center gap-12 px-4 
     py-14 md:flex-row md:gap-30 bg-gradient-to-r from-[#4956A2] to-[#000000]">
-      <div className="flex flex-col items-start gap-5 text-left max-w-6xl">
+      <div className="flex flex-col items-start gap-5 text-left max-w-6xl pl-5 md:pl-0">
         <div>
-          <div className='flex gap-3'>
+          <div className='md:flex gap-3'>
             <h1 className="font-secondary text-4xl  text-brand-white md:text-6xl">Encuentra </h1>
             <h1 className="font-secondary font-bold text-4xl   md:text-6xl text-[#CD2E4C]">experiencias</h1>
           </div>
