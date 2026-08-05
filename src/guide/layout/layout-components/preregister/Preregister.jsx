@@ -134,24 +134,24 @@ function Preregister({ onViewSite = null }) {
                                 </span>
 
                                 <span className="font-main text-3xl font-bold text-brand-red">
-                                    próxima aventura.
+                                    próxima aventura
                                 </span>
                             </div>
 
                             {/* Mobile */}
-                            <div className="flex flex-col md:hidden leading-tight">
+                            <div className="flex flex-col md:hidden items-rigth mb-5">
                                 <span className="font-body text-xl text-brand-charcoal/90">
                                     Regístrate y comienza tu
                                 </span>
 
                                 <div className="flex items-baseline gap-2">
                                     <span className="font-main text-3xl font-bold text-brand-red">
-                                        próxima aventura.
+                                        próxima aventura
                                     </span>
                                 </div>
                             </div>
 
-                            <span className="text-end font-body text-sm text-brand-charcoal/90 ">
+                            <span className="md:text-end font-body text-sm text-brand-charcoal/90 ">
                                 Participa para ganar una estadía para 2 personas y sé uno de los
                                 primeros en descubrir experiencias, destinos y promociones exclusivas de Panamá Viajero.
                             </span>
