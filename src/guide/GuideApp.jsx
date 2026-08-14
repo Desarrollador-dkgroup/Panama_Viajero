@@ -30,6 +30,8 @@ const Veraguas = lazy(() => import('./destinations/destinations-pages/veraguas/V
 const GunaYala = lazy(() => import('./destinations/destinations-pages/comarca-guna-yala/GunaYala.jsx'))
 const RiveraPacifica = lazy(() => import('./destinations/destinations-pages/rivera-pacifica/RiveraPacifica.jsx'))
 
+const HOME_SECTION_HASHES = new Set(['#home', '#us', '#map', '#preregister'])
+
 function RouteFallback() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-brand-soft px-6 text-center text-brand-charcoal">
@@ -44,7 +46,9 @@ function SectionFallback({ className = '' }) {
 
 function GuideHome() {
   const location = useLocation()
-  const [showCountdown, setShowCountdown] = useState(true)
+  const [showCountdown, setShowCountdown] = useState(
+    () => !HOME_SECTION_HASHES.has(location.hash),
+  )
   const [showRegisterFlot, setShowRegisterFlot] = useState(false)
 
   const homeRef = useRef(null)
@@ -61,26 +65,23 @@ function GuideHome() {
     '#preregister': -100,
   }
 
-  const scrollToSection = (ref) => {
+  const scrollToSection = (ref, hash) => {
     setShowCountdown(false)
     setShowRegisterFlot(false)
     const target = ref.current
     if (!target) return
-    const top = target.getBoundingClientRect().top + window.scrollY - menuOffset
-    window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: 'instant' })
+    const top =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      menuOffset +
+      (sectionOffsets[hash] ?? 0)
+    window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: 'smooth' })
   }
 
-  const scrollToHome = () => scrollToSection(homeRef)
-  const scrollToMap = () => {
-    setShowCountdown(false)
-    setShowRegisterFlot(false)
-    const target = mapRef.current
-    if (!target) return
-    const top = target.getBoundingClientRect().top + window.scrollY + sectionOffsets['#map']
-    window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: 'instant' })
-  }
-  const scrollToPreregister = () => scrollToSection(preregisterRef)
-  const scrollToUs = () => scrollToSection(usRef)
+  const scrollToHome = () => scrollToSection(homeRef, '#home')
+  const scrollToMap = () => scrollToSection(mapRef, '#map')
+  const scrollToPreregister = () => scrollToSection(preregisterRef, '#preregister')
+  const scrollToUs = () => scrollToSection(usRef, '#us')
   const openRegisterFlot = () => {
     setShowCountdown(false)
     setShowRegisterFlot(true)
@@ -113,7 +114,7 @@ function GuideHome() {
           window.scrollY -
           menuOffset +
           (sectionOffsets[location.hash] ?? 0)
-        window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: 'instant' })
+        window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: 'smooth' })
       })
 
       if (cancelled) cancelAnimationFrame(frame2)
@@ -211,8 +212,10 @@ function GuideApp() {
   const location = useLocation()
 
   useEffect(() => {
+    if (location.pathname === '/' && HOME_SECTION_HASHES.has(location.hash)) return
+
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-  }, [location.pathname])
+  }, [location.hash, location.pathname])
 
   return (
     <PublishedSitesProvider>
