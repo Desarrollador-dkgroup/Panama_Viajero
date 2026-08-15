@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import SimuladorApp from '../../../img_test/Simulador_app_P1.svg'
+import SimuladorApp from '../../../img_test/NuevaAppSimulacion.svg'
 
 function AboutUs() {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
