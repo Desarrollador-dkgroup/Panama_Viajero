@@ -31,6 +31,21 @@ const GunaYala = lazy(() => import('./destinations/destinations-pages/comarca-gu
 const RiveraPacifica = lazy(() => import('./destinations/destinations-pages/rivera-pacifica/RiveraPacifica.jsx'))
 
 const HOME_SECTION_HASHES = new Set(['#home', '#us', '#map', '#preregister'])
+const routeTitles = {
+  '/': 'Panamá Viajero',
+  '/provincias/bocas-del-toro': 'Panamá Viajero | Bocas del Toro',
+  '/provincias/chiriqui': 'Panamá Viajero | Chiriquí',
+  '/provincias/cocle': 'Panamá Viajero | Coclé',
+  '/provincias/colon': 'Panamá Viajero | Colón',
+  '/provincias/darien': 'Panamá Viajero | Darién',
+  '/provincias/herrera': 'Panamá Viajero | Herrera',
+  '/provincias/los-santos': 'Panamá Viajero | Los Santos',
+  '/provincias/panama': 'Panamá Viajero | Panamá',
+  '/provincias/panama-oeste': 'Panamá Viajero | Panamá Oeste',
+  '/provincias/veraguas': 'Panamá Viajero | Veraguas',
+  '/provincias/comarca-guna-yala': 'Panamá Viajero | Guna Yala',
+  '/rivera-pacifica': 'Panamá Viajero | Riviera Pacífica',
+}
 
 function RouteFallback() {
   return (
@@ -216,6 +231,10 @@ function GuideApp() {
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [location.hash, location.pathname])
+
+  useEffect(() => {
+    document.title = routeTitles[location.pathname] || 'Panamá Viajero'
+  }, [location.pathname])
 
   return (
     <PublishedSitesProvider>

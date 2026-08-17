@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Menu from '../../../components/menu/Menu.jsx'
 import ButtomBanner from '../../../components/bottombanner/Bottombanner.jsx'
@@ -55,6 +56,12 @@ function SiteInfo() {
     ...(zoneLabel ? [{ label: zoneLabel, to: zonePath }] : []),
     { label: site?.nombre || 'Sitio' },
   ]
+
+  useEffect(() => {
+    document.title = site?.nombre
+      ? `Panamá Viajero | ${site.nombre}`
+      : 'Panamá Viajero | Sitio'
+  }, [site?.nombre])
 
   if (!site && loading) {
     return <main className="min-h-screen bg-brand-soft" />

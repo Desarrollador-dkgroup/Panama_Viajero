@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CELULAR from '../img_test/Simulador_app_P1.svg'
+import CELULAR from '../img_test/NuevaAppSimulacion.svg'
 
 function Descarga() {
     const [rotation, setRotation] = useState({

@@ -55,6 +55,11 @@ function ZonePage() {
     provinceData?.targets?.find((target) => target.zoneId === decodedZoneId || target.id === decodedZoneId) ?? null
   const safeHeading = zone?.nombre || fallbackTarget?.nombre || 'Zona'
   const safeDescription = zone?.descripcion || fallbackTarget?.descripcion || provinceData?.descripcionCorta || ''
+
+  useEffect(() => {
+    document.title = `Panamá Viajero | ${safeHeading}`
+  }, [safeHeading])
+
   const sitios = useMemo(
     () => {
       const staticSites = (zone?.sitios || [])
