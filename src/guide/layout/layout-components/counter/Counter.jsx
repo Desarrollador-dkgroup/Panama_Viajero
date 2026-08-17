@@ -1,6 +1,6 @@
 import { RxCross2 } from 'react-icons/rx'
 import { useEffect } from 'react'
-import VentanaEmergente from '../../../img_test/VEMERGENTE.svg'
+import VentanaEmergente from '../../../img_test/Emergente.svg'
 import Logo from '../../../img_test/LogoRectangularNegro.svg'
 import Playstore from '../../../img_test/Playstore.svg'
 import Applestore from '../../../img_test/Applestore.svg'
