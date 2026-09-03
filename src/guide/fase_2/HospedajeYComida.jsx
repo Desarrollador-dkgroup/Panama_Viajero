@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { FiChevronRight, FiCoffee, FiHome, FiMapPin, FiTag, FiX } from 'react-icons/fi'
 import hoteles from './hoteles.js'
 import restaurantes from './restaurantes.js'
-import ventanaEmergente from '../img_test/VEMERGENTE.svg'
+import ventanaEmergente from '../img_test/Emergente.svg'
 
 function HospedajeYComida({ fallbackImage = '' }) {
   const [activeTab, setActiveTab] = useState('hoteles')
