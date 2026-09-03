@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import LogoVertical from '../../img_test/LogoVertical.svg'
 import LogoCuadrado from '../../img_test/LogoCuadrado.svg'
@@ -65,12 +65,9 @@ function Menu({
   onPreregisterClick,
   onMapClick,
   onUsClick,
-  autoHideOnScroll = false,
   hideMobileMenu = false,
 }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
-  const lastScrollY = useRef(0)
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -79,25 +76,6 @@ function Menu({
       document.body.style.overflow = ''
     }
   }, [isOpen])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-
-      if (currentScrollY < 80 || currentScrollY < lastScrollY.current) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
-
-      lastScrollY.current = currentScrollY
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [autoHideOnScroll])
 
   const closeMenu = () => setIsOpen(false)
   const goToRegister = () => {
@@ -119,9 +97,7 @@ function Menu({
 
   return (
     <div
-      className={`relative z-[100] bg-gradient-to-b from-brand-charcoal/80 pt-3 to-transparent pb-5 backdrop-blur-[1px] transition-[transform,opacity] duration-300 ease-in-out ${
-        autoHideOnScroll && !isVisible ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'
-      }`}
+      className="relative z-[100] bg-gradient-to-b from-brand-charcoal/80 pt-3 to-transparent pb-5 backdrop-blur-[1px]"
     >
       <div className="flex w-full items-center justify-between px-3  text-md text-brand-white md:pt-0 md:pl-10 md:pr-30">
         <button className="cursor-pointer transition hover:scale-110" onClick={goToHome}>
