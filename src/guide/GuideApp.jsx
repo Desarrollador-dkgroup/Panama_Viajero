@@ -81,10 +81,6 @@ function GuideHome() {
   const scrollToMap = () => scrollToSection(mapRef, '#map')
   const scrollToPreregister = () => scrollToSection(preregisterRef, '#preregister')
   const scrollToUs = () => scrollToSection(usRef, '#us')
-  const openRegisterFlot = () => {
-    setShowCountdown(false)
-    setShowRegisterFlot(true)
-  }
 
 
   useEffect(() => {
@@ -129,14 +125,12 @@ function GuideHome() {
     <div className="relative bg-brand-soft text-brand-charcoal">
       {showCountdown && (
         <Suspense fallback={null}>
-          <CountdownModal
-            onClose={() => setShowCountdown(false)}
-            onPreregister={openRegisterFlot}
-          />
-          
+          <CountdownModal onClose={() => setShowCountdown(false)} />
         </Suspense>
       )}
 
+      {/* Formulario flotante de prerregistro. Se conserva para usarlo más adelante, pero hoy
+          ningún botón lo abre (se quitó «Empieza a explorar» de la ventana emergente). */}
       {showRegisterFlot && (
         <Suspense fallback={null}>
           <RegistrerFlotante onClose={() => setShowRegisterFlot(false)} />

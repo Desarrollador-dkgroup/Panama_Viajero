@@ -62,8 +62,8 @@ function BottomBanner({ onLogoClick }) {
                             </a>
                         </div>
                         <span className="font-body text-xs md:text-sm text-brand-white/70">Contacto:
-                            <a href="mailto:hola@panamaviajero.app" className="text-brand-white hover:text-brand-white/80 transition ml-1">
-                                hola@panamaviajero.app
+                            <a href="mailto:hola@panamaviajero.com" className="text-brand-white hover:text-brand-white/80 transition ml-1">
+                                hola@panamaviajero.com
                             </a>
                         </span>
                     </div>

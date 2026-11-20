@@ -8,7 +8,7 @@ import Applestore from '../../../img_test/Applestore.svg'
 const preloadedPopupImage = new Image()
 preloadedPopupImage.src = VentanaEmergente
 
-function CountdownModal({ onClose, onPreregister }) {
+function CountdownModal({ onClose }) {
     useEffect(() => {
         const previousOverflow = document.body.style.overflow
         document.body.style.overflow = 'hidden'
@@ -55,7 +55,7 @@ function CountdownModal({ onClose, onPreregister }) {
 
                         <div className="relative z-20 mt-[-15px] flex w-full flex-col items-start text-center md:text-left">
                             <h1 className="text-sm font-bold text-brand-blue">¡Espéralo pronto!</h1>
-                            <h2 className="text-2xl font-secondary text-[#CD2E4C]">Octubre 2026</h2>
+                            <h2 className="text-2xl font-secondary text-[#CD2E4C]">2027</h2>
                             <div className="mt-[1px] w-45 border-1 border-brand-blue/50" />
 
                             <div className="mt-[-10px] ml-[-14px] flex items-center justify-center md:justify-start">
@@ -79,20 +79,6 @@ function CountdownModal({ onClose, onPreregister }) {
                             <p className="mx-auto mt-5 max-w-sm font-body text-sm leading-6 text-white/80 sm:text-base md:mx-0 hidden md:block">
                                 Encuentra destinos, hospedajes, restaurantes, tours y experiencias para explorar Panamá desde una sola aplicación.
                             </p>
-
-                            <div className="mt-2 flex flex-col items-center gap-4 md:mt-8 sm:flex-row sm:justify-center md:justify-start">
-                                <button
-                                    type="button"
-                                    onClick={onPreregister}
-                                    className="w-full cursor-pointer rounded-full bg-white px-7 py-3.5 text-sm font-bold text-brand-charcoal shadow-[0_14px_30px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:bg-white/95 sm:w-auto"
-                                >
-                                    Empieza a explorar
-                                </button>
-
-                                <p className="max-w-[220px] font-body text-sm leading-5 text-white/80">
-                                    y participa por una estadía para 2 personas.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
