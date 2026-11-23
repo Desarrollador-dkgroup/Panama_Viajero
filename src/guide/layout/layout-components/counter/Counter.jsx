@@ -79,6 +79,15 @@ function CountdownModal({ onClose }) {
                             <p className="mx-auto mt-5 max-w-sm font-body text-sm leading-6 text-white/80 sm:text-base md:mx-0 hidden md:block">
                                 Encuentra destinos, hospedajes, restaurantes, tours y experiencias para explorar Panamá desde una sola aplicación.
                             </p>
+
+                            {/* Cierra la ventana igual que la X; no lleva a ninguna página. */}
+                            <button
+                                type="button"
+                                onClick={onClose}
+                                className="mt-6 w-full cursor-pointer rounded-full bg-white px-7 py-3.5 text-sm font-bold text-brand-charcoal shadow-[0_14px_30px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:bg-white/95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto md:mt-8"
+                            >
+                                Ingresar
+                            </button>
                         </div>
                     </div>
                 </div>
