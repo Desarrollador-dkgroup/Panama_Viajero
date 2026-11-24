@@ -152,8 +152,8 @@ function Preregister({ onViewSite = null }) {
                             </div>
 
                             <span className="md:text-end font-body text-sm text-brand-charcoal/90 ">
-                                Participa para ganar una estadía para 2 personas y sé uno de los
-                                primeros en descubrir experiencias, destinos y promociones exclusivas de Panamá Viajero.
+                                Sé uno de los primeros en descubrir experiencias, destinos y
+                                promociones exclusivas de Panamá Viajero.
                             </span>
                         </div>
                     </div>
