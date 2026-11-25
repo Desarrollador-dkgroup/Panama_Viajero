@@ -27,7 +27,6 @@ const Panama = lazy(() => import('./destinations/destinations-pages/panama/Panam
 const PanamaOeste = lazy(() => import('./destinations/destinations-pages/panama-oeste/PanamaOeste.jsx'))
 const Veraguas = lazy(() => import('./destinations/destinations-pages/veraguas/Veraguas.jsx'))
 const GunaYala = lazy(() => import('./destinations/destinations-pages/comarca-guna-yala/GunaYala.jsx'))
-const RiveraPacifica = lazy(() => import('./destinations/destinations-pages/rivera-pacifica/RiveraPacifica.jsx'))
 
 const HOME_SECTION_HASHES = new Set(['#home', '#us', '#map', '#preregister'])
 
@@ -226,7 +225,6 @@ function GuideApp() {
           <Route path="/provincias/panama-oeste" element={<PanamaOeste />} />
           <Route path="/provincias/veraguas" element={<Veraguas />} />
           <Route path="/provincias/comarca-guna-yala" element={<GunaYala />} />
-          <Route path="/rivera-pacifica" element={<RiveraPacifica />} />
           <Route path="/sitios/:siteId" element={<SiteInfo />} />
           <Route path="/zonas/:zoneId" element={<ZonePage />} />
         </Routes>

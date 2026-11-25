@@ -21,13 +21,6 @@ export const provinceMedia = [
     poster: '/maps/provinces/cocle.avif',
   },
   {
-    id: 'rivera-pacifica',
-    nombre: 'Riviera Pacífica',
-    path: '/rivera-pacifica',
-    banner: '/images/destinations/rivera-pacifica/bg-rivera-pacifica.webp',
-    poster: '/images/destinations/rivera-pacifica/bg-rivera-pacifica.webp',
-  },
-  {
     id: 'colon',
     nombre: 'Colón',
     path: '/provincias/colon',

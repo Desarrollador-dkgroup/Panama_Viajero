@@ -6,7 +6,6 @@ const provinceDescriptions: Record<string, string> = {
   'bocas-del-toro': 'Islas caribeñas, cultura y aventuras frente al mar.',
   chiriqui: 'Montañas, café de altura y experiencias de naturaleza.',
   cocle: 'Playas, montañas y tradiciones en el corazón de Panamá.',
-  'rivera-pacifica': 'Playas, surf y espectaculares atardeceres.',
   colon: 'Historia caribeña, fortalezas y paisajes tropicales.',
   darien: 'Naturaleza, cultura indígena y aventura.',
   herrera: 'Folclore, gastronomía y tradiciones panameñas.',
@@ -30,12 +29,11 @@ function getRandomItems(items, limit) {
 
 function Suggestions() {
   const navigate = useNavigate()
-  const suggestions = useMemo(() => {
-    const riveraPacifica = provinceMedia.find((province) => province.id === 'rivera-pacifica')
-    const others = provinceMedia.filter((province) => province.banner && province.id !== 'rivera-pacifica')
-    const randomOthers = getRandomItems(others, 2)
-    return riveraPacifica ? [riveraPacifica, ...randomOthers] : randomOthers
-  }, [])
+  // Tres destinos al azar entre los que tienen video o imagen de portada.
+  const suggestions = useMemo(
+    () => getRandomItems(provinceMedia.filter((province) => province.banner), 3),
+    [],
+  )
 
   return (
   // Se cambió px-4 por pt-16 para balancear el padding top y bottom con pb-16

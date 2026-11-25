@@ -17,12 +17,11 @@ function AleatorySuggestions() {
     const navigate = useNavigate();
     const location = useLocation();
     const breadcrumbSourceLabel = 'Destinos';
-    const suggestions = useMemo(() => {
-        const riveraPacifica = provinceMedia.find((province) => province.id === 'rivera-pacifica');
-        const others = provinceMedia.filter((province) => province.poster && province.id !== 'rivera-pacifica');
-        const randomOthers = getRandomItems(others, 2);
-        return riveraPacifica ? [riveraPacifica, ...randomOthers] : randomOthers;
-    }, []);
+    // Tres destinos al azar entre los que tienen imagen de portada.
+    const suggestions = useMemo(
+        () => getRandomItems(provinceMedia.filter((province) => province.poster), 3),
+        [],
+    );
 
     return (
         <section className="mx-auto w-full max-w-7xl px-4 mt-30">

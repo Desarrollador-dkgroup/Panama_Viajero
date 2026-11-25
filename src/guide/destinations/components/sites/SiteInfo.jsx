@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import Menu from '../../../components/menu/Menu.jsx'
 import ButtomBanner from '../../../components/bottombanner/Bottombanner.jsx'
 import { siteRegistry } from '../../destinations-pages/siteRegistry.js'
@@ -8,13 +8,13 @@ import DeferredSection from '../../../layout/layout-components/DeferredSection.j
 import { FiMapPin } from 'react-icons/fi'
 import BreadcrumbNav from '../destinations/BreadcrumbNav.jsx'
 import { usePublishedSites } from '../../context/publishedSitesStore.js'
+import { legacySiteSlugs } from '../../context/legacySiteSlugs.js'
 import { provinceMedia } from '../../destinations-pages/provinceMedia.js'
 
 const provinceLabels = {
   'bocas-del-toro': 'Bocas del Toro',
   chiriqui: 'Chiriquí',
   cocle: 'Coclé',
-  'rivera-pacifica': 'Riviera Pacífica',
   colon: 'Colón',
   darien: 'Darién',
   herrera: 'Herrera',
@@ -54,6 +54,12 @@ function SiteInfo() {
     ...(zoneLabel ? [{ label: zoneLabel, to: zonePath }] : []),
     { label: site?.nombre || 'Sitio' },
   ]
+
+  // Los enlaces antiguos (/sitios/api-<id>) llevan a la dirección actual del sitio.
+  const legacySlug = legacySiteSlugs[decodedSiteId]
+  if (!site && legacySlug) {
+    return <Navigate to={`/sitios/${legacySlug}`} replace state={location.state} />
+  }
 
   if (!site && loading) {
     return <main className="min-h-screen bg-brand-soft" />
