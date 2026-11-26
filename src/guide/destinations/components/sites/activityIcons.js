@@ -1,15 +1,18 @@
 import {
-  LuBird,
-  LuBinoculars,
   LuBike,
+  LuBinoculars,
+  LuBird,
   LuCamera,
+  LuCoffee,
   LuCompass,
   LuFish,
+  LuLandmark,
   LuMapPinned,
   LuMountain,
   LuShipWheel,
-  LuStore,
   LuSparkles,
+  LuStore,
+  LuTent,
   LuTreePalm,
   LuTrees,
   LuUtensilsCrossed,
@@ -18,33 +21,67 @@ import {
 import { FaUmbrellaBeach } from 'react-icons/fa6'
 import { IoBoat } from 'react-icons/io5'
 
-const activityIconRules = [
-  { test: /(playa|playas)/, Icon: FaUmbrellaBeach },
-  { test: /(aguas?\s*termales?|termales?|termal)/, Icon: LuWaves },
-  { test: /(nataci|nado|nadar|swim|surf|snorkel|buce|kayak|mar|arrecife)/, Icon: LuWaves },
-  { test: /(paseo(?:s)? en lancha|lancha|bote|boat)/, Icon: IoBoat },
-  { test: /(pesca)/, Icon: LuFish },
-  { test: /(ciclismo|patinaje|ruta|bicicleta)/, Icon: LuBike },
-  { test: /(gastron|comida|restaur|sabores|culin)/, Icon: LuUtensilsCrossed },
-  { test: /(senderismo|monta|trek)/, Icon: LuMountain },
-  { test: /(bosque|naturaleza|parque)/, Icon: LuTrees },
-  { test: /(estrella|estrellas)/, Icon: LuSparkles },
-  { test: /(avistamiento|observaci).*(rana|ranas).*(roja|rojas)/, Icon: LuCamera },
-  { test: /(avistamiento|observaci).*(delfin|delfines)/, Icon: LuBinoculars },
-  { test: /(avistamiento|observaci).*(ballena|ballenas|tortuga|tortugas|fauna marina|marino|marina|medusa|medusas|pez|peces|coral|arrecife|manta|rayas?|manglar|manglares)/, Icon: LuWaves },
-  { test: /(avistamiento|observaci|aves|pajar)/, Icon: LuBird },
-  { test: /(tour|recorrido|museo|hist|casco|ciudad|urbano|paseo|visitas)/, Icon: LuMapPinned },
-  { test: /(isla|islote)/, Icon: LuTreePalm },
-  { test: /(isla|islote|costa|costera|marino)/, Icon: LuShipWheel },
-  { test: /(fotograf|paisaje|foto|mirador)/, Icon: LuCamera },
-  { test: /.*/, Icon: LuCompass },
+// Iconos que se eligen en pv_admin para cada actividad (columna icon_key). Las mismas claves
+// están en el panel (activity-icon.tsx), en la página oficial (activity-icons.ts) y en la base.
+const ICONS = {
+  playa: FaUmbrellaBeach,
+  agua: LuWaves,
+  bote: IoBoat,
+  pesca: LuFish,
+  bicicleta: LuBike,
+  comida: LuUtensilsCrossed,
+  cafe: LuCoffee,
+  montana: LuMountain,
+  bosque: LuTrees,
+  camping: LuTent,
+  estrellas: LuSparkles,
+  fotografia: LuCamera,
+  binoculares: LuBinoculars,
+  aves: LuBird,
+  recorrido: LuMapPinned,
+  cultura: LuLandmark,
+  compras: LuStore,
+  isla: LuTreePalm,
+  costa: LuShipWheel,
+  exploracion: LuCompass,
+}
+
+// Si no se eligió icono, se decide por el nombre con las mismas reglas del panel y la web.
+const RULES = [
+  [/(playa|playas)/, 'playa'],
+  [/(aguas?\s*termales?|termales?|termal)/, 'agua'],
+  [/(nataci|nado|nadar|swim|surf|snorkel|buce|kayak|mar|arrecife)/, 'agua'],
+  [/(paseo(?:s)? en lancha|lancha|bote|boat)/, 'bote'],
+  [/(pesca)/, 'pesca'],
+  [/(ciclismo|patinaje|ruta|bicicleta)/, 'bicicleta'],
+  [/(gastron|comida|restaur|sabores|culin)/, 'comida'],
+  [/(senderismo|monta|trek)/, 'montana'],
+  [/(bosque|naturaleza|parque)/, 'bosque'],
+  [/(estrella|estrellas)/, 'estrellas'],
+  [/(avistamiento|observaci).*(rana|ranas).*(roja|rojas)/, 'fotografia'],
+  [/(avistamiento|observaci).*(delfin|delfines)/, 'binoculares'],
+  [/(avistamiento|observaci).*(ballena|tortuga|marin|medusa|pez|peces)/, 'agua'],
+  [/(avistamiento|observaci).*(coral|arrecife|manta|raya|manglar)/, 'agua'],
+  [/(avistamiento|observaci|aves|pajar)/, 'aves'],
+  [/(canal|tour|recorrido|museo|hist|casco|ciudad|urbano|paseo|visitas)/, 'recorrido'],
+  [/(isla|islote)/, 'isla'],
+  [/(costa|costera|marino)/, 'costa'],
+  [/(fotograf|paisaje|foto|mirador)/, 'fotografia'],
 ]
 
-export function getActivityIcon(activityName) {
-  const normalized = activityName
+export function normalizeActivityName(activityName) {
+  return activityName
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+}
 
-  return activityIconRules.find(({ test }) => test.test(normalized)) ?? activityIconRules[activityIconRules.length - 1]
+// Icono de una actividad: el elegido en el panel (iconKey) o, si no hay, el que corresponde
+// al nombre. Devuelve { Icon } para que los componentes lo usen como <Icon />.
+export function getActivityIcon(activityName, iconKey) {
+  if (iconKey && ICONS[iconKey]) return { Icon: ICONS[iconKey] }
+  const normalized = normalizeActivityName(activityName)
+  const key = RULES.find(([test]) => test.test(normalized))?.[1] ?? 'exploracion'
+  return { Icon: ICONS[key] }
 }

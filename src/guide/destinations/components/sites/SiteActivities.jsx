@@ -180,7 +180,7 @@ function SiteActivities({ site = null }) {
             <div className="mx-auto mt-4 flex max-h-[350px] w-full max-w-2xl flex-col gap-3 overflow-y-auto overflow-x-hidden pr-2 md:flex-row [scrollbar-width:thin] [scrollbar-color:#4956A2_#EBEBEB]">
               <div className="flex w-full min-w-0 flex-1 flex-col gap-3">
                 {leftColumnActivities.map((actividad, index) => {
-                  const { Icon } = getActivityIcon(actividad.nombre)
+                  const { Icon } = getActivityIcon(actividad.nombre, actividad.icono)
                   const accent = index % 3 === 0 ? '#4956A2' : index % 3 === 1 ? '#CD2E4C' : '#4D4C4C'
                   const isOpen = activeActivity === actividad.nombre
 
@@ -227,7 +227,7 @@ function SiteActivities({ site = null }) {
 
               <div className="flex w-full min-w-0 flex-1 flex-col gap-3">
                 {rightColumnActivities.map((actividad, index) => {
-                  const { Icon } = getActivityIcon(actividad.nombre)
+                  const { Icon } = getActivityIcon(actividad.nombre, actividad.icono)
                   const accent = index % 3 === 0 ? '#4956A2' : index % 3 === 1 ? '#CD2E4C' : '#4D4C4C'
                   const isOpen = activeActivity === actividad.nombre
 

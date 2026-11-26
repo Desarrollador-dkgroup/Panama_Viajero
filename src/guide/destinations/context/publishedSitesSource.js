@@ -11,14 +11,14 @@ const SITE_FIELDS = [
   'id', 'slug', 'name', 'description', 'short_description', 'province_id', 'region_id',
   'zone_id', 'maps_embed_url',
   'tourist_site_photos(storage_path,position)',
-  'tourist_site_activities(name,description,position)',
+  'tourist_site_activities(name,description,icon_key,position)',
 ].join(',')
 
 // «Bocas del Toro» → «bocas-del-toro», el formato de provincias y zonas de la guía.
 function slugify(text) {
   return text
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
@@ -56,7 +56,11 @@ function mapSite(row) {
     gallery,
     actividades: [...(row.tourist_site_activities || [])]
       .sort(byPosition)
-      .map((activity) => ({ nombre: activity.name, descripcion: activity.description || '' })),
+      .map((activity) => ({
+        nombre: activity.name,
+        descripcion: activity.description || '',
+        icono: activity.icon_key || null,
+      })),
   }
 }
 
